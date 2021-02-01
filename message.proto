@@ -1,0 +1,16 @@
+syntax = "proto3";
+option go_package = ".;chatroompb";
+
+import "google/protobuf/timestamp.proto";
+
+package chatroompb;
+
+service Chatroom {
+    rpc Join (stream Post) returns (stream Post);
+}
+
+message Post {
+    string user_name = 1;
+    string data = 2;
+    google.protobuf.Timestamp post_time = 3;
+}
